@@ -36,6 +36,7 @@ export async function createSignatureRequest({ participants, base64Content }) {
         );
 
         return response.data;
+
     } catch (error) {
         console.error('Error details:', error.response?.data || error.message);
         throw new Error('Failed to send signature request');
