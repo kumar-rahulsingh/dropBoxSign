@@ -11,7 +11,7 @@ export async function createSignatureRequest({ participants, base64Content }) {
         payload.append('title', 'Please sign this agreement');
         payload.append('subject', 'Agreement Signing Request');
         payload.append('message', 'Please sign this document to proceed.');
-        payload.append('test_mode', '1'); 
+        payload.append('test_mode', '1');
 
         participants.forEach((participant, index) => {
             payload.append(`signers[${index}][email_address]`, participant.email);
@@ -25,8 +25,9 @@ export async function createSignatureRequest({ participants, base64Content }) {
 
         const headers = {
             Authorization: `Basic ${Buffer.from(API_KEY + ':').toString('base64')}`,
-            ...payload.getHeaders(), /
+            ...payload.getHeaders(),
         };
+
 
         // Make the API request
         const response = await axios.post(
